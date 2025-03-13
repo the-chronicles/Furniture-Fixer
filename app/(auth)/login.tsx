@@ -1,38 +1,69 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Platform } from 'react-native';
 import { Link, router } from 'expo-router';
-import { Eye, EyeOff } from 'lucide-react-native';
+import { PhoneAuthProvider, signInWithPhoneNumber } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+// import auth from '@react-native-firebase/auth';
+
 
 export default function Login() {
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({ phone: '', password: '' });
+  const [otp, setOtp] = useState('');
+  const [verificationId, setVerificationId] = useState('');
+  const [step, setStep] = useState(1);
+  const [errors, setErrors] = useState({
+    phone: '',
+    otp: ''
+  });
 
   const validatePhone = (number: string) => {
     const phoneRegex = /^[6-9]\d{9}$/;
     return phoneRegex.test(number);
   };
 
-  const handleLogin = () => {
-    const newErrors = { phone: '', password: '' };
-
+  const handleSendOTP = async () => {
     if (!phone) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!validatePhone(phone)) {
-      newErrors.phone = 'Please enter a valid Indian phone number';
+      setErrors(prev => ({ ...prev, phone: 'Phone number is required' }));
+      return;
+    }
+    
+    if (!validatePhone(phone)) {
+      setErrors(prev => ({ ...prev, phone: 'Please enter a valid Indian phone number' }));
+      return;
     }
 
-    if (!password) {
-      newErrors.password = 'Password is required';
+    try {
+      if (Platform.OS === 'web') {
+        // For web platform
+        const recaptchaVerifier = new PhoneAuthProvider.RecaptchaVerifier(auth, 'recaptcha-container', {
+          size: 'invisible'
+        });
+        
+        const phoneNumber = `+91${phone}`;
+        const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
+        setVerificationId(confirmationResult.verificationId);
+        setStep(2);
+        setErrors({ phone: '', otp: '' });
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      setErrors(prev => ({ ...prev, phone: 'Error sending OTP. Please try again.' }));
+    }
+  };
+
+  const handleVerifyOTP = async () => {
+    if (!otp || otp.length !== 6) {
+      setErrors(prev => ({ ...prev, otp: 'Please enter a valid 6-digit OTP' }));
+      return;
     }
 
-    setErrors(newErrors);
-
-    if (!newErrors.phone && !newErrors.password) {
-      // Handle login logic here
-      console.log('Login successful');
-      router.replace('/(customer)');
+    try {
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
+      await auth.signInWithCredential(credential);
+      router.replace('/(app)/(customer)');
+    } catch (error) {
+      console.error('Error verifying OTP:', error);
+      setErrors(prev => ({ ...prev, otp: 'Invalid OTP. Please try again.' }));
     }
   };
 
@@ -44,59 +75,62 @@ export default function Login() {
           style={styles.logo}
         />
         <Text style={styles.title}>Welcome Back!</Text>
-        <Text style={styles.subtitle}>Sign in to continue</Text>
+        <Text style={styles.subtitle}>
+          {step === 1 ? 'Sign in with your phone number' : 'Enter the verification code'}
+        </Text>
       </View>
 
       <View style={styles.form}>
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Phone Number</Text>
-          <View style={styles.phoneInput}>
-            <Text style={styles.countryCode}>+91</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter your phone number"
-              keyboardType="phone-pad"
-              value={phone}
-              onChangeText={setPhone}
-              maxLength={10}
-            />
-          </View>
-          {errors.phone ? <Text style={styles.errorText}>{errors.phone}</Text> : null}
-        </View>
+        {Platform.OS === 'web' && <div id="recaptcha-container" />}
+        
+        {step === 1 ? (
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Phone Number</Text>
+            <View style={styles.phoneInput}>
+              <Text style={styles.countryCode}>+91</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your phone number"
+                keyboardType="phone-pad"
+                value={phone}
+                onChangeText={setPhone}
+                maxLength={10}
+              />
+            </View>
+            {errors.phone ? <Text style={styles.errorText}>{errors.phone}</Text> : null}
 
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Password</Text>
-          <View style={styles.passwordInput}>
-            <TextInput
-              style={[styles.input, { flex: 1 }]}
-              placeholder="Enter your password"
-              secureTextEntry={!showPassword}
-              value={password}
-              onChangeText={setPassword}
-            />
-            <TouchableOpacity
-              style={styles.eyeIcon}
-              onPress={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? (
-                <EyeOff size={20} color="#666" />
-              ) : (
-                <Eye size={20} color="#666" />
-              )}
+            <TouchableOpacity style={styles.loginButton} onPress={handleSendOTP}>
+              <Text style={styles.loginButtonText}>Send OTP</Text>
             </TouchableOpacity>
           </View>
-          {errors.password ? <Text style={styles.errorText}>{errors.password}</Text> : null}
-        </View>
+        ) : (
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>Enter OTP</Text>
+            <TextInput
+              style={[styles.input, styles.otpInput]}
+              placeholder="Enter 6-digit OTP"
+              keyboardType="number-pad"
+              value={otp}
+              onChangeText={setOtp}
+              maxLength={6}
+            />
+            {errors.otp ? <Text style={styles.errorText}>{errors.otp}</Text> : null}
 
-        <Link href="/forgot-password" asChild>
-          <TouchableOpacity>
-            <Text style={styles.forgotPassword}>Forgot Password?</Text>
-          </TouchableOpacity>
-        </Link>
+            <TouchableOpacity style={styles.loginButton} onPress={handleVerifyOTP}>
+              <Text style={styles.loginButtonText}>Verify & Sign In</Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Sign In</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.resendButton}
+              onPress={() => {
+                setStep(1);
+                setOtp('');
+              }}
+            >
+              <Text style={styles.resendText}>Resend OTP</Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         <View style={styles.signupContainer}>
           <Text style={styles.signupText}>Don't have an account? </Text>
@@ -122,7 +156,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     padding: 32,
-    backgroundColor: '#99631f',
+    backgroundColor: '#4A90E2',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
@@ -182,16 +216,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 14,
   },
-  passwordInput: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  otpInput: {
     borderWidth: 1,
     borderColor: '#E5E5E5',
     borderRadius: 12,
     backgroundColor: '#F8F9FA',
-  },
-  eyeIcon: {
-    padding: 12,
+    textAlign: 'center',
+    letterSpacing: 8,
   },
   errorText: {
     fontFamily: 'Inter-Regular',
@@ -199,29 +230,32 @@ const styles = StyleSheet.create({
     color: '#FF4B4B',
     marginTop: 4,
   },
-  forgotPassword: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 14,
-    color: '#99631f',
-    textAlign: 'right',
-    marginBottom: 24,
-  },
   loginButton: {
-    backgroundColor: '#99631f',
+    backgroundColor: '#4A90E2',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
-    marginBottom: 24,
+    marginTop: 24,
   },
   loginButtonText: {
     fontFamily: 'Inter-SemiBold',
     fontSize: 16,
     color: '#fff',
   },
+  resendButton: {
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  resendText: {
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 14,
+    color: '#4A90E2',
+  },
   signupContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 24,
   },
   signupText: {
     fontFamily: 'Inter-Regular',
@@ -231,6 +265,6 @@ const styles = StyleSheet.create({
   signupLink: {
     fontFamily: 'Inter-SemiBold',
     fontSize: 14,
-    color: '#99631f',
+    color: '#4A90E2',
   },
 });

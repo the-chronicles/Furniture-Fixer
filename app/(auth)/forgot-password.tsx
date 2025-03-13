@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     padding: 32,
-    backgroundColor: '#99631f',
+    backgroundColor: '#4A90E2',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   button: {
-    backgroundColor: '#99631f',
+    backgroundColor: '#4A90E2',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   resendText: {
     fontFamily: 'Inter-SemiBold',
     fontSize: 14,
-    color: '#99631f',
+    color: '#4A90E2',
   },
   backToLoginContainer: {
     flexDirection: 'row',
@@ -239,6 +239,6 @@ const styles = StyleSheet.create({
   backToLoginLink: {
     fontFamily: 'Inter-SemiBold',
     fontSize: 14,
-    color: '#99631f',
+    color: '#4A90E2',
   },
 });

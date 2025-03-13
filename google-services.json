@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952558946169",
+    "project_id": "furniture-fixer",
+    "storage_bucket": "furniture-fixer.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952558946169:android:08c71f5acf315ebcd011a8",
+        "android_client_info": {
+          "package_name": "com.chroniclesmaan.FurnitureFixer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG7AK1Q13B6Ks8_15RmTaWrTjcl128SgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
