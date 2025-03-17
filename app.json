@@ -9,7 +9,9 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chroniclesmaan.FurnitureFixer",
+      "googleServicesFile": "./GoogleService-Info.plist",
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -29,7 +31,7 @@
       "@react-native-firebase/auth",
       "expo-router",
       [
-        "expo-splash-screen", 
+        "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
