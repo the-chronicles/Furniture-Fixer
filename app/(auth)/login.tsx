@@ -268,3 +268,115 @@ const styles = StyleSheet.create({
     color: '#4A90E2',
   },
 });
+
+
+
+
+
+
+
+
+
+// // New update
+// // import { AuthHeader, Button } from "@/components/shared";
+// import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+// import { SafeAreaView } from "react-native-safe-area-context";
+// import { z } from "zod";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+// import { Input } from "@/components/forms/Input";
+// import { useRef, useState } from "react";
+// import { useRouter } from "expo-router";
+// // import tw from "@/tw";
+// // import { useTheme } from "@/utils/hooks";
+// import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+// import { PhoneModal } from "@/components/shared/PhoneModal";
+// // import { showToast } from "@/utils/functions";
+// import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha"; // Use the correct package
+// import { PhoneAuthProvider } from "firebase/auth";
+// import { useTranslation } from "react-i18next";
+// import { app, auth } from "@/lib/firebaseConfig";
+// import { Modal } from "react-native";
+
+// const Schema = z.object({
+//   phone: z.string().min(1).refine((phoneNumber) => /^[0-9]+$/.test(phoneNumber), {
+//     message: "Phone number must contain only numbers",
+//   }),
+// });
+
+// type ValidationType = z.infer<typeof Schema>;
+
+// export default function Login() {
+//   const { t } = useTranslation();
+//   const recaptchaVerifier = useRef(null);
+//   // const { isDark } = useTheme();
+//   const [countryCode, setCountryCode] = useState("+234");
+//   const router = useRouter();
+//   const [showCountryCodeModal, setShowCountryCodeModal] = useState(false);
+//   const methods = useForm<ValidationType>({
+//     mode: "onBlur",
+//     resolver: zodResolver(Schema),
+//   });
+
+//   function closeModal() {
+//     setShowCountryCodeModal(false);
+//   }
+
+//   const handleSubmit: SubmitHandler<ValidationType> = async (values) => {
+//     try {
+//       const phoneProvider = new PhoneAuthProvider(auth);
+//       const verificationId = await phoneProvider.verifyPhoneNumber(
+//         countryCode + values.phone,
+//         recaptchaVerifier.current as any
+//       );
+//       showToast("Verification code sent!", "success");
+
+//       // Navigate to confirm OTP page
+//       router.push({
+//         pathname: "/(auth)/confirm-otp",
+//         params: { verificationId, phone: countryCode + values.phone, countryCode },
+//       });
+//     } catch (err: any) {
+//       showToast(`Error: ${err.message}`, "error");
+//     }
+//   };
+
+//   return (
+//     <>
+//       <FirebaseRecaptchaVerifierModal
+//         ref={recaptchaVerifier}
+//         firebaseConfig={app.options}
+//         attemptInvisibleVerification={true}
+//       />
+//       <Modal
+//         isShowingModal={showCountryCodeModal}
+//         closeModal={closeModal}
+//         handlePress={(arg) => setCountryCode(arg)}
+//       />
+//       <SafeAreaView style={tw.style("flex-1 px-6 bg-white", isDark && "bg-custom-black")}>
+//         <KeyboardAwareScrollView contentContainerStyle={{ gap: 37 }} showsVerticalScrollIndicator={false}>
+//           {/* <AuthHeader title={t("loginPhone")} /> */}
+//           <Text>Login</Text>
+//           <View style={{ gap: 24 }}>
+//             <FormProvider {...methods}>
+//               <TextInput<ValidationType>
+//                 keyboardType="number-pad"
+//                 inputLeftElement={
+//                   <TouchableOpacity onPress={() => setShowCountryCodeModal(true)} accessible={true}>
+//                     <Text style={tw.style("font-dmSans-500 text-lg text-custom-black", isDark && "text-white")}>
+//                       {countryCode}
+//                     </Text>
+//                   </TouchableOpacity>
+//                 }
+//                 placeholder="923 434 3"
+//                 name="phone"
+//               />
+//             </FormProvider>
+//           </View>
+//           {/* <Button isLoading={methods.formState.isSubmitting} onPress={methods.handleSubmit(handleSubmit)} /> */}
+//           <Button title="Submit" isLoading={methods.formState.isSubmitting} onPress={methods.handleSubmit(handleSubmit)} />
+//         </KeyboardAwareScrollView>
+//       </SafeAreaView>
+//     </>
+//   );
+// }

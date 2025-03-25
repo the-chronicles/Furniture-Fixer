@@ -1,4 +1,4 @@
-package com.chroniclesmaan.FurnitureFixer
+package com.furniturefixer
 
 import android.app.Application
 import android.content.res.Configuration

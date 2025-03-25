@@ -14,8 +14,8 @@
 		96905EF65AED1B983A6B3ABC /* libPods-FurnitureFixer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FurnitureFixer.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		B293386337E545548C3AAF76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4227199C79CC43DA91430361 /* GoogleService-Info.plist */; };
-		CA5302BFD7F94F22AAB2332D /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B81D6BD6054F87805351C5 /* noop-file.swift */; };
+		E1941E54C50A43C09C0BE3F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B72EE613F4A40D5A7827BC0 /* GoogleService-Info.plist */; };
+		0AB513C09A584366B0565491 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C99306B164BE1813EA938 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +32,9 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FurnitureFixer/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		4227199C79CC43DA91430361 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "FurnitureFixer/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
-		07B81D6BD6054F87805351C5 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "FurnitureFixer/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		3E71865192074B3A92A371B6 /* FurnitureFixer-Bridging-Header.h */ = {isa = PBXFileReference; name = "FurnitureFixer-Bridging-Header.h"; path = "FurnitureFixer/FurnitureFixer-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6B72EE613F4A40D5A7827BC0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "FurnitureFixer/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		AC6C99306B164BE1813EA938 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "FurnitureFixer/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		A9989641112441CBA6B08FDB /* FurnitureFixer-Bridging-Header.h */ = {isa = PBXFileReference; name = "FurnitureFixer-Bridging-Header.h"; path = "FurnitureFixer/FurnitureFixer-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +59,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				4227199C79CC43DA91430361 /* GoogleService-Info.plist */,
-				07B81D6BD6054F87805351C5 /* noop-file.swift */,
-				3E71865192074B3A92A371B6 /* FurnitureFixer-Bridging-Header.h */,
+				6B72EE613F4A40D5A7827BC0 /* GoogleService-Info.plist */,
+				AC6C99306B164BE1813EA938 /* noop-file.swift */,
+				A9989641112441CBA6B08FDB /* FurnitureFixer-Bridging-Header.h */,
 			);
 			name = FurnitureFixer;
 			sourceTree = "<group>";
@@ -201,8 +201,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				B293386337E545548C3AAF76 /* GoogleService-Info.plist in Resources */,
-				108D3011C42949CF8E810C96 /* FurnitureFixer-Bridging-Header.h in Resources */,
+				E1941E54C50A43C09C0BE3F9 /* GoogleService-Info.plist in Resources */,
+				40D68D5EE9A045C49297B695 /* FurnitureFixer-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +278,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				CA5302BFD7F94F22AAB2332D /* noop-file.swift in Sources */,
+				0AB513C09A584366B0565491 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

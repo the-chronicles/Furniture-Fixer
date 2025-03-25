@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, RecaptchaVerifier  } from 'firebase/auth';
+import { getAuth, initializeAuth, RecaptchaVerifier  } from 'firebase/auth';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -13,11 +13,25 @@ const firebaseConfig = {
   appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID
 };
 
+// const app = initializeApp(firebaseConfig);
+// export const auth = getAuth(app);
+
+
+// const app = initializeApp(firebaseConfig);
+
+// export default app; 
+
+
+
+// forceRecaptchaFlowForTesting: true;
+
+
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
 
+// Get Firebase auth instance
+const auth = getAuth(app);
 
+export { auth };
 
-forceRecaptchaFlowForTesting: true;
 
 

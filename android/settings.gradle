@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'Furniture-Fixer'
+rootProject.name = 'FurnitureFixer'
 
 dependencyResolutionManagement {
   versionCatalogs {
