@@ -40,7 +40,7 @@ export default function Bookings() {
         <TouchableOpacity key={booking.id} style={styles.bookingCard}>
           <View style={styles.bookingHeader}>
             <View style={styles.serviceInfo}>
-              <Tool size={20} color="#4A90E2" />
+              {/* <Tool size={20} color="#4A90E2" /> */}
               <Text style={styles.serviceName}>{booking.service}</Text>
             </View>
             <Text style={[
@@ -54,17 +54,17 @@ export default function Bookings() {
           </View>
 
           <View style={styles.detailRow}>
-            <Calendar size={16} color="#666" />
+            {/* <Calendar size={16} color="#666" /> */}
             <Text style={styles.detailText}>{booking.date}</Text>
           </View>
 
           <View style={styles.detailRow}>
-            <MapPin size={16} color="#666" />
+            {/* <MapPin size={16} color="#666" /> */}
             <Text style={styles.detailText}>{booking.location}</Text>
           </View>
 
           <View style={styles.technicianInfo}>
-            <Clock size={16} color="#666" />
+            {/* <Clock size={16} color="#666" /> */}
             <Text style={styles.detailText}>Technician: {booking.technician}</Text>
           </View>
         </TouchableOpacity>

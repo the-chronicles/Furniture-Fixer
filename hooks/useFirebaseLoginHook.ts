@@ -44,40 +44,12 @@
 
 
 
-// import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
-// import { useRef } from "react";
-// import { auth } from "../lib/firebaseConfig";
-
-// export const useFirebaseLogin = () => {
-//   const recaptchaVerifier = useRef(null);
-
-//   const sendOtp = async (phoneNumber: string) => {
-//     if (!phoneNumber || !recaptchaVerifier.current) return;
-//     const phoneProvider = new PhoneAuthProvider(auth);
-//     return phoneProvider.verifyPhoneNumber(phoneNumber, recaptchaVerifier.current);
-//   };
-
-//   const verifyOtp = async (verificationId: string, otp: string) => {
-//     if (!verificationId || !otp) return;
-//     const credential = PhoneAuthProvider.credential(verificationId, otp);
-//     return signInWithCredential(auth, credential);
-//   };
-
-//   return { recaptchaVerifier, sendOtp, verifyOtp };
-// };
-
-
-
-
-
-
 import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
 import { useRef } from "react";
-import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import { auth } from "../lib/firebaseConfig";
 
 export const useFirebaseLogin = () => {
-  const recaptchaVerifier = useRef<FirebaseRecaptchaVerifierModal>(null);
+  const recaptchaVerifier = useRef(null);
 
   const sendOtp = async (phoneNumber: string) => {
     if (!phoneNumber || !recaptchaVerifier.current) return;
@@ -93,4 +65,32 @@ export const useFirebaseLogin = () => {
 
   return { recaptchaVerifier, sendOtp, verifyOtp };
 };
+
+
+
+
+
+
+// import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
+// import { useRef } from "react";
+// import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+// import { auth } from "../lib/firebaseConfig";
+
+// export const useFirebaseLogin = () => {
+//   const recaptchaVerifier = useRef<FirebaseRecaptchaVerifierModal>(null);
+
+//   const sendOtp = async (phoneNumber: string) => {
+//     if (!phoneNumber || !recaptchaVerifier.current) return;
+//     const phoneProvider = new PhoneAuthProvider(auth);
+//     return phoneProvider.verifyPhoneNumber(phoneNumber, recaptchaVerifier.current);
+//   };
+
+//   const verifyOtp = async (verificationId: string, otp: string) => {
+//     if (!verificationId || !otp) return;
+//     const credential = PhoneAuthProvider.credential(verificationId, otp);
+//     return signInWithCredential(auth, credential);
+//   };
+
+//   return { recaptchaVerifier, sendOtp, verifyOtp };
+// };
 

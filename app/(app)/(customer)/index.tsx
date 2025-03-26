@@ -23,7 +23,7 @@ const services = [
 export default function CustomerHome() {
   return (
     <>
-    {/* <SafeAreaView> */}
+    <SafeAreaView>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.greeting}>Hello, John! 👋</Text>
@@ -31,7 +31,7 @@ export default function CustomerHome() {
       </View>
 
       <View style={styles.searchContainer}>
-        <Search size={20} color="#666" />
+        {/* <Search size={20} color="#666" /> */}
         <Text style={styles.searchPlaceholder}>Search for services...</Text>
       </View>
 
@@ -52,7 +52,7 @@ export default function CustomerHome() {
         <Text style={styles.bookingDate}>Today, 2:30 PM</Text>
       </View>
     </ScrollView>
-    {/* </SafeAreaView> */}
+    </SafeAreaView>
     </>
   );
 }
