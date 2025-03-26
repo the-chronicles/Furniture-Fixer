@@ -51,7 +51,7 @@ export default function Profile() {
         {menuItems.map((item, index) => (
           <TouchableOpacity key={index} style={styles.menuItem}>
             <View style={styles.menuIcon}>
-              <item.icon size={24} color="#4A90E2" />
+              <item.icon size={24} color="#99631f" />
             </View>
             <View style={styles.menuText}>
               <Text style={styles.menuTitle}>{item.title}</Text>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F9FA',
   },
   header: {
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#99631f',
     padding: 32,
     alignItems: 'center',
   },

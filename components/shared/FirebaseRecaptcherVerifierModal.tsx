@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ActivityIndicator, Button, Modal, SafeAreaView, StyleSheet, Text, View } from "react-native";
-// import { FirebaseAuthApplicationVerifier, FirebaseRecaptcha } from ".";
 import { FirebaseAuthApplicationVerifier, FirebaseRecaptcha } from "expo-firebase-recaptcha";
 import { CustomError } from "./types";
 
@@ -218,3 +217,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+
+

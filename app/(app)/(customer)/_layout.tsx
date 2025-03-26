@@ -10,7 +10,7 @@ export default function CustomerTabLayout() {
           borderTopWidth: 1,
           borderTopColor: '#E5E5E5',
         },
-        tabBarActiveTintColor: '#4A90E2',
+        tabBarActiveTintColor: '#99631f',
         tabBarInactiveTintColor: '#999',
         headerShown: false,
       }}

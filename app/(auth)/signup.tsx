@@ -81,7 +81,7 @@ export default function Signup() {
         />
         <Text style={styles.title}>Create Account</Text>
         <Text style={styles.subtitle}>
-          {step === 1 ? "Join our community today" : "Verify your phone number"}
+          {step === 1 ? "" : "Verify your phone number"}
         </Text>
       </View>
 
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     padding: 32,
-    backgroundColor: "#4A90E2",
+    backgroundColor: "#99631f",
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     color: "#fff",
     marginBottom: 8,
+    textAlign: 'center',
   },
   subtitle: {
     fontFamily: "Inter-Regular",
@@ -273,7 +274,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   signupButton: {
-    backgroundColor: "#4A90E2",
+    backgroundColor: "#99631f",
     borderRadius: 12,
     padding: 16,
     alignItems: "center",
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
   resendText: {
     fontFamily: "Inter-SemiBold",
     fontSize: 14,
-    color: "#4A90E2",
+    color: "#99631f",
   },
   loginContainer: {
     flexDirection: "row",
@@ -307,9 +308,11 @@ const styles = StyleSheet.create({
   loginLink: {
     fontFamily: "Inter-SemiBold",
     fontSize: 14,
-    color: "#4A90E2",
+    color: "#99631f",
   },
 });
+
+
 
 // import React, { useState } from "react";
 // import { View, TextInput, Button, Text, Alert } from "react-native";

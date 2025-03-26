@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 24,
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#99631f',
   },
   title: {
     fontFamily: 'Poppins-Bold',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   userBubble: {
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#99631f',
     borderBottomRightRadius: 4,
   },
   supportBubble: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   sendButton: {
     width: 40,
     height: 40,
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#99631f',
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
