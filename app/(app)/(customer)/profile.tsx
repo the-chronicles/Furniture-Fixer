@@ -33,7 +33,7 @@ const menuItems = [
 export default function Profile() {
   const handleLogout = () => {
     // Here you would typically clear any auth tokens or user data
-    router.replace('/login');
+    router.replace('/signup');
   };
 
   return (
