@@ -1,37 +1,75 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
-import { Search } from 'lucide-react-native';
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from "react-native";
+import { BellDot, Search } from "lucide-react-native";
 
 const services = [
   {
     id: 1,
-    name: 'Furniture Repair',
-    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=500',
+    name: "Repair",
+    image: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=500",
   },
   {
     id: 2,
-    name: 'Assembly',
-    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500',
+    name: "Assembly",
+    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500",
   },
   {
     id: 3,
-    name: 'Restoration',
-    image: 'https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500',
+    name: "Restoration",
+    image: "https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500",
   },
   {
     id: 4,
-    name: 'Cleaning',
-    image: 'https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500',
+    name: "Cleaning",
+    image: "https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500",
+  },
+  {
+    id: 5,
+    name: "Upholstery",
+    image: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=500",
+  },
+  {
+    id: 6,
+    name: "Refresher",
+    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500",
+  },
+  {
+    id: 7,
+    name: "Moving Help",
+    image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=500",
+  },
+  {
+    id: 8,
+    name: "Moving Help",
+    image:
+      "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=5000",
+  },
+  {
+    id: 9,
+    name: "Help",
+    image: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=500",
   },
 ];
 
 export default function CustomerHome() {
   return (
-    <>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.greeting}>Hello, John! 👋</Text>
-        <Text style={styles.subtitle}>What service do you need today?</Text>
+        <View>
+          <Text style={styles.greeting}>Hello!</Text>
+          <Text style={styles.subtitle}>What service do you need today?</Text>
+        </View>
+
+        <TouchableOpacity style={styles.notification}>
+          <BellDot size={20} color="#99631f" />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.searchContainer}>
@@ -40,54 +78,63 @@ export default function CustomerHome() {
       </View>
 
       <Text style={styles.sectionTitle}>Our Services</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.servicesScroll}>
+
+      <View style={styles.gridContainer}>
         {services.map((service) => (
-          <TouchableOpacity key={service.id} style={styles.serviceCard}>
-            <Image source={{ uri: service.image }} style={styles.serviceImage} />
-            <Text style={styles.serviceName}>{service.name}</Text>
+          <TouchableOpacity key={service.id} style={styles.gridItem}>
+            <Image source={{ uri: service.image }} style={styles.gridImage} />
+            <Text style={styles.gridName}>{service.name}</Text>x
           </TouchableOpacity>
         ))}
-      </ScrollView>
-
-      <Text style={styles.sectionTitle}>Recent Bookings</Text>
-      <View style={styles.bookingCard}>
-        <Text style={styles.bookingTitle}>Chair Repair</Text>
-        <Text style={styles.bookingStatus}>In Progress</Text>
-        <Text style={styles.bookingDate}>Today, 2:30 PM</Text>
       </View>
     </ScrollView>
-    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
+    backgroundColor: "#F8F9FA",
   },
   header: {
-    padding: 24,
-    backgroundColor: '#99631f',
+    paddingTop: 60,
+    paddingLeft: 24,
+    paddingBottom: 24,
+    backgroundColor: "#99631f",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   greeting: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: "Poppins-Bold",
     fontSize: 24,
-    color: '#fff',
-    marginBottom: 4,
+    color: "#fff",
   },
   subtitle: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 16,
-    color: '#E1E1E1',
+    fontFamily: "Inter-Regular",
+    fontSize: 18,
+    color: "#E1E1E1",
+  },
+  notification: {
+    position: "absolute",
+    right: 24,
+    top: 70,
+    width: 40,
+    height: 40,
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
   },
   searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     margin: 24,
     padding: 12,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    shadowColor: '#000',
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -98,27 +145,32 @@ const styles = StyleSheet.create({
   },
   searchPlaceholder: {
     marginLeft: 8,
-    fontFamily: 'Inter-Regular',
-    color: '#666',
+    fontFamily: "Inter-Regular",
+    color: "#666",
+    fontSize: 16,
   },
   sectionTitle: {
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 20,
-    color: '#1A1A1A',
+    fontFamily: "Poppins-SemiBold",
+    fontSize: 24,
+    color: "#1A1A1A",
     marginHorizontal: 24,
-    marginBottom: 16,
+    marginBottom: 20,
   },
-  servicesScroll: {
-    paddingLeft: 24,
+  // Grid styles
+  gridContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
     marginBottom: 24,
   },
-  serviceCard: {
-    width: 150,
-    marginRight: 16,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    overflow: 'hidden',
-    shadowColor: '#000',
+  gridItem: {
+    width: "30%",
+    marginBottom: 16,
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    overflow: "hidden",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -126,46 +178,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3.84,
     elevation: 5,
+    aspectRatio: 1, // Makes items square
   },
-  serviceImage: {
-    width: '100%',
-    height: 100,
+  gridImage: {
+    // width: '100%',
+    height: "70%",
   },
-  serviceName: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 16,
-    color: '#1A1A1A',
-    padding: 12,
-  },
-  bookingCard: {
-    margin: 24,
-    padding: 16,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  bookingTitle: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: 18,
-    color: '#1A1A1A',
-    marginBottom: 8,
-  },
-  bookingStatus: {
-    fontFamily: 'Inter-Regular',
+  gridName: {
+    fontFamily: "Inter-SemiBold",
     fontSize: 14,
-    color: '#99631f',
-    marginBottom: 4,
-  },
-  bookingDate: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 14,
-    color: '#666',
+    color: "#1A1A1A",
+    padding: 8,
+    textAlign: "center",
   },
 });

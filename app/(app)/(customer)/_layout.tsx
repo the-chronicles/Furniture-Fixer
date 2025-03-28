@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, Calendar, MessageSquare, User } from 'lucide-react-native';
+import { Chrome as Home, Calendar, MessageSquare, User, House, UserRound } from 'lucide-react-native';
 
 export default function CustomerTabLayout() {
   return (
@@ -13,13 +13,14 @@ export default function CustomerTabLayout() {
         tabBarActiveTintColor: '#99631f',
         tabBarInactiveTintColor: '#999',
         headerShown: false,
+      
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <House size={size} color={color} />,
         }}
       />
       <Tabs.Screen
@@ -40,7 +41,7 @@ export default function CustomerTabLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <UserRound size={size} color={color} />,
         }}
       />
     </Tabs>

@@ -140,6 +140,7 @@ export default function Signup() {
       setVerificationId(id ?? null);
       Alert.alert("OTP Sent", "Please check your phone for the verification code.");
       setStep(2);
+      // router.replace("/(app)/(customer)");
     } catch (error) {
       Alert.alert("Error", error instanceof Error ? error.message : "An unknown error occurred");
     }
