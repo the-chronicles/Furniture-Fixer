@@ -6,7 +6,7 @@ export default function Index() {
   // For now, we'll redirect to login by default
   return (
     <SafeAreaView>
-      <Redirect href="/login" />
+      <Redirect href="/signup" />
     </SafeAreaView>
   );
 }

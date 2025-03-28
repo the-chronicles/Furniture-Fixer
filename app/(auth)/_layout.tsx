@@ -3,7 +3,6 @@ import { LogBox } from "react-native";
 
 LogBox.ignoreAllLogs(true);  
 
-
 export default function AuthLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>

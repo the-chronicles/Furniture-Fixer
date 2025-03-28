@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image} from 'react-native';
 import { Search } from 'lucide-react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 const services = [
   {
@@ -18,12 +18,16 @@ const services = [
     name: 'Restoration',
     image: 'https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500',
   },
+  {
+    id: 4,
+    name: 'Cleaning',
+    image: 'https://images.unsplash.com/photo-1560185127-2d5d2d6e79ef?w=500',
+  },
 ];
 
 export default function CustomerHome() {
   return (
     <>
-    {/* <SafeAreaView> */}
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.greeting}>Hello, John! 👋</Text>
@@ -52,7 +56,6 @@ export default function CustomerHome() {
         <Text style={styles.bookingDate}>Today, 2:30 PM</Text>
       </View>
     </ScrollView>
-    {/* </SafeAreaView> */}
     </>
   );
 }

@@ -39,7 +39,8 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-build-properties"
+      "expo-build-properties",
+      "expo-location"
     ],
     "experiments": {
       "typedRoutes": true
@@ -50,7 +51,8 @@
       },
       "eas": {
         "projectId": "a1fc20bc-95da-4daa-99bc-de6fde822b69"
-      }
+      },
+      "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
     }
   }
 }
