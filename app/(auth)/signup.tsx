@@ -138,7 +138,7 @@ export default function Signup() {
       const fullPhoneNumber = `+91${phoneNumber}`;
       const id = await sendOtp(fullPhoneNumber);
       setVerificationId(id ?? null);
-      Alert.alert("OTP Sent", "Please check your phone for the verification code.");
+      Alert.alert("OTP Sent", "Please check your phone for the verification code");
       setStep(2);
       // router.replace("/(app)/(customer)");
     } catch (error) {
