@@ -135,12 +135,12 @@ export default function Signup() {
     try {
       if (!validatePhone(phoneNumber)) return;
 
-      const fullPhoneNumber = `+91${phoneNumber}`;
-      const id = await sendOtp(fullPhoneNumber);
-      setVerificationId(id ?? null);
-      Alert.alert("OTP Sent", "Please check your phone for the verification code");
-      setStep(2);
-      // router.replace("/(app)/(customer)");
+      // const fullPhoneNumber = `+91${phoneNumber}`;
+      // const id = await sendOtp(fullPhoneNumber);
+      // setVerificationId(id ?? null);
+      // Alert.alert("OTP Sent", "Please check your phone for the verification code");
+      // setStep(2);
+      router.replace("/(app)/(customer)");
     } catch (error) {
       Alert.alert("Error", error instanceof Error ? error.message : "An unknown error occurred");
     }
